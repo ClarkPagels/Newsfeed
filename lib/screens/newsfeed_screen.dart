@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import '../providers/post_provider.dart';
 import './add_post_screen.dart';
 import '../widgets/post_item.dart';
