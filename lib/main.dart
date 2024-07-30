@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import './providers/post_provider.dart';
 import './screens/newsfeed_screen.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp( MyApp());
