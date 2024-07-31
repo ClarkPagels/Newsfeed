@@ -8,41 +8,35 @@ import 'add_post_screen.dart';
 class NewsfeedScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final ButtonStyle style = TextButton.styleFrom(
-      foregroundColor: Theme.of(context).colorScheme.onPrimary,
-    );
     return Scaffold(
       appBar: AppBar(
-        title: Text('add post'),
-        actions:<Widget> [
-          TextButton(
-            style:style,
-            onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (ctx) =>NewsfeedScreen(),
-                ),
-              );
-            },
-            child: const Text('add post'),
-          ),
-          /*IconButton(
-            icon: Icon(Icons.add,color:Colors.black),
-            onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (ctx) => AddPostScreen(),
-                ),
-              );
-            },
-          ),*/
-        ],
+        title: Text('Newsfeed'),
       ),
-      body: Consumer<PostProvider>(
-        builder: (ctx, postProvider, _) => ListView.builder(
-          itemCount: postProvider.posts.length,
-          itemBuilder: (ctx, index) => PostItem(postProvider.posts[index]),
-        ),
+      body: Column(
+        children: [
+          Expanded(
+            child: Consumer<PostProvider>(
+              builder: (ctx, postProvider, _) => ListView.builder(
+                itemCount: postProvider.posts.length,
+                itemBuilder: (ctx, index) => PostItem(postProvider.posts[index]),
+              ),
+            ),
+          ),
+          Container(
+            padding: const EdgeInsets.all(16.0),
+            width: double.infinity,
+            child: ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (ctx) => AddPostScreen(),
+                  ),
+                );
+              },
+              child: Text('Add Post'),
+            ),
+          ),
+        ],
       ),
     );
   }
