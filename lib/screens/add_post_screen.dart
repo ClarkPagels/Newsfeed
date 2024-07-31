@@ -30,7 +30,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
     );
     return Scaffold(
       appBar: AppBar(
-        title: Text('Back to main),
+        title: Text('Back to main'),
         actions:<Widget>[
 
         TextButton(
@@ -57,7 +57,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
           ),*/
         ],
       ),
-    )
+
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
