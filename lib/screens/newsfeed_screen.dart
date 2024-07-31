@@ -4,8 +4,22 @@ import '../providers/post_provider.dart';
 import './add_post_screen.dart';
 import '../widgets/post_item.dart';
 import 'add_post_screen.dart';
+class NewsfeedScreen extends StatefulWidget {
+  @override
+  _NewsfeedScreenState createState() => _NewsfeedScreenState();
+}
 
-class NewsfeedScreen extends StatelessWidget {
+class _NewsfeedScreenState extends State<NewsfeedScreen> {
+  final _nameController = TextEditingController();
+
+  String _userName = '';
+
+  void _updateUserName() {
+    setState(() {
+      _userName = _nameController.text;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,6 +28,32 @@ class NewsfeedScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Row(
+              children: [
+                Expanded(
+                  child: TextField(
+                    decoration: InputDecoration(labelText: 'Enter your name'),
+                    controller: _nameController,
+                    onSubmitted: (_) => _updateUserName(),
+                  ),
+                ),
+                IconButton(
+                  icon: Icon(Icons.check),
+                  onPressed: _updateUserName,
+                ),
+              ],
+            ),
+          ),
+          if (_userName.isNotEmpty)
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Text(
+                'Hello, $_userName!',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+            ),
           Expanded(
             child: Consumer<PostProvider>(
               builder: (ctx, postProvider, _) => ListView.builder(
