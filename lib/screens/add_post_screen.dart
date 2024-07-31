@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/post_provider.dart';
+import 'newsfeed_screen.dart';
 
 class AddPostScreen extends StatefulWidget {
   @override
@@ -24,9 +25,37 @@ class _AddPostScreenState extends State<AddPostScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final ButtonStyle style = TextButton.styleFrom(
+      foregroundColor: Theme.of(context).colorScheme.onPrimary,
+    );
     return Scaffold(
       appBar: AppBar(
-        title: Text('Add New Post'),
+        title: Text('Back to main),
+        actions:<Widget>[
+
+        TextButton(
+          style:style,
+          onPressed: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (ctx) =>NewsfeedScreen(),
+              ),
+            );
+          },
+          child: const Text('back to newsfeed'),
+        ),
+         /*
+          IconButton(
+            icon: Icon(Icons.,color:Colors.black),
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (ctx) => AddPostScreen(),
+                ),
+              );
+            },
+          ),*/
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
